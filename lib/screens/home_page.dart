@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Provider API'),
+        title: const Text('User List'),
       ),
       body: Consumer<UserProvider>(
         builder: (context, value, child) {

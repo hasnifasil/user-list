@@ -37,7 +37,6 @@ class _HomePageState extends State<HomePage> {
           final users = value.user;
 
           if (users.isEmpty) {
-          
             return const Center(
               child: Text('No Users available.'),
             );
@@ -47,18 +46,37 @@ class _HomePageState extends State<HomePage> {
             itemCount: users.length,
             itemBuilder: (context, index) {
               final user = users[index];
-              return ListTile(
-                leading: InkWell(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                UserDetails(userId: users[index].userId!,
-                 id: users[index].id!, title: users[index].title!, body: users[index].body!)));},
-                  child: CircleAvatar(
-                    child: Text(user.id.toString()),
-                  ),
-                ),
-                title: Text(
-                  user.title!,
-                  style: TextStyle(
-                    color:  Colors.black,
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      color: Colors.grey[200]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ListTile(
+                      leading: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UserDetails(
+                                      userId: users[index].userId!,
+                                      id: users[index].id!,
+                                      title: users[index].title!,
+                                      body: users[index].body!)));
+                        },
+                        child: CircleAvatar(
+                          child: Text(user.id.toString()),
+                        ),
+                      ),
+                      title: Text(
+                        user.title!,
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               );
